@@ -42,12 +42,9 @@ class _CardGameWidgetState extends State<CardGameWidget> {
 
   @override
   void didUpdateWidget(CardGameWidget oldWidget) {
+    print("didUpdateWidget");
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.initCards.length != gameCards.length ||
-        ((oldWidget.initCards.length == gameCards.length) &&
-            (oldWidget.initCards[0] != gameCards[0] ||
-                oldWidget.initCards[1] != gameCards[1] ||
-                oldWidget.initCards[2] != gameCards[2]))) {
+    if (oldWidget.initCards != widget.initCards) {
       gameCards = [...widget.initCards];
       isGameStart = true;
     }
@@ -55,7 +52,6 @@ class _CardGameWidgetState extends State<CardGameWidget> {
 
   @override
   Widget build(BuildContext context) {
-    print('build');
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

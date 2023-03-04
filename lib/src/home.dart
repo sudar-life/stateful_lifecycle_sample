@@ -27,17 +27,18 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int money = 400;
-  List<String> initCards = [];
+  List<String> initCards = List.unmodifiable([]);
   void makeInitCards() {
     if (money - 100 < 0) return;
     money -= 100;
-    initCards.clear();
+    var cards = [];
+
     List.generate(3, (index) {
       var index = Random().nextInt(HomePage.cardList.length);
       var card = HomePage.cardList[index];
-      initCards.add(card);
+      cards.add(card);
     });
-    print(initCards);
+    initCards = List.unmodifiable([...cards]);
     update();
   }
 
